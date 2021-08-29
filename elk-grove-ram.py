@@ -8,11 +8,12 @@ url = 'https://www.elkgrovedodge.net/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_
 response = json.loads(requests.get(url).text)
 
 # loop throught he cars and pull the details out
-print('{:4s} | {:16s} | {:42s} | {:8s} | {:8s} | {:6s}  '.format("Year", "Model", "Trim", "MSRP", "Final", "% Off"))
-print ('-' * 100)
+print('{:4s} | {:16s} | {:42s} | {:8s} | {:8s} | {:6s} | {:18s}'.format("Year", "Model", "Trim", "MSRP", "Final", "% Off", "VIN"))
+print ('-' * 120)
 for i in response["pageInfo"]['trackingData']:
     modelYear = i['modelYear']
     trim = i['trim']
+    vin = i['vin']
     model = i['model']
     msrp = i['pricing']['msrp'].replace(',', '').replace('$', '')
     final = i['pricing']['finalPrice'].replace(',', '').replace('$', '')
@@ -23,4 +24,13 @@ for i in response["pageInfo"]['trackingData']:
     # positive number is markup
     discountPercent =  (((int(final) / int(msrp)) -1) * 100)
     discountPercent = round(discountPercent, 2)
-    print('{:4s} | {:16s} | {:42s} | {:8s} | {:8s} | {:6s}  '.format(str(modelYear), str(model), str(trim), str(msrp2Print), str(final2Print), str(discountPercent)))
+    print('{:4s} | {:16s} | {:42s} | {:8s} | {:8s} | {:6s} | {:18s}'.format(
+        str(modelYear), 
+        str(model), 
+        str(trim), 
+        str(msrp2Print), 
+        str(final2Print), 
+        str(discountPercent), 
+        str(vin)
+        )
+    )
