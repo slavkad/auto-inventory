@@ -3,6 +3,38 @@ import json
 import re
 import sys, getopt
 
+"""
+
+The purpose of this script it to leverage a JSON call to dealer.com network and to parse the output.
+With this methond, we can scan any dealership which utilizes dealer.com network for their inventory.
+
+using in conjunction with filters, I am able to get a list of all matching vehicles and determine their
+current discount.
+
+to identify if dealership is using dealer.com, simply nagivate to their site and scroll to the bottom
+
+to extend this script:
+1) nagivate to dealer site and build your search
+2) get the url generated and extract search arguments, such as model, engine, package, etc.
+3) in this script locate dealerDOTcom_dic dictionary and add element to it matching from existing examples.
+    3a) be sure to add dealer url
+    3b) be sure to split up search arguments.
+4) remember the dictionary element name given for this new daeler
+
+run the script with --dealer [your dictionary element name]
+
+TODO:
+
+* add alert mechanism to get notified when vehicle is available with certain discount percentage
+* make nicer output
+* extend the script to also process dealer Inspire network
+
+NOTES:
+
+JSON returned from the dealer site offers a lot more details and data.  This script is easy to extend to
+provide more info if desired.
+
+"""
 
 def alert_on_discount(l_modelYear, l_model, l_trim, l_msrp2Print, l_final2Print, l_discountPercent, l_vin):
     percent_sign = '%'
