@@ -252,7 +252,16 @@ def main(argv):
                 'gvBodyStyle': 'SUV',
                 'normalDriveLine': 'AWD'
             }
-        }
+        },
+        # 'StevenCreekHundai' :  {
+        #     'url' :  'https://www.stevenscreekhyundai.com/',
+        #     'alert_percent_threshold' : -0.0,
+        #     'search' : {
+        #         'model' : 'Palisade',
+        #         'drivetrain': 'AWD',
+        #         'make': 'Hyundai'
+        #     }
+        # }
     }
 
     # lets process the arguments
